@@ -28,17 +28,17 @@ Things you may want to cover:
 
 |Column|Type|Options|
 |------|----|-------|
-|user|text|null: false|
+|name|string|null: false|
 |email|text|null: false, add_index:user,:email,unique|
 |password|text|null: false|
-|groups_id|integer|null: false,foreign_key: true|
+
 
 
 
 ### Association
 - has_many :groups_users
-- has_many :groups, dependent: :destroy, through:groups_users
-- has_many :masseages,  dependent: :destroy
+- has_many :groups, through:groups_users
+- has_many :messeages
 
 
 
@@ -46,8 +46,8 @@ Things you may want to cover:
 
 |Column|Type|Options|
 |------|----|-------|
-|group_name|text|null: false|
-|users_id|integer|null: false, foreign_key: true|
+|name|string|null: false|
+
 
 
 
@@ -63,10 +63,10 @@ Things you may want to cover:
 
 |Column|Type|Options|
 |------|----|-------|
-|body|text|null: false|
+|body|text||
 |image|text||
-|groups_id|integer|foreign_key: true|
-|users_id|integer|foreign_key: true|
+|group_id|integer|foreign_key: true|
+|user_id|integer|foreign_key: true|
 
 
 ### Association
@@ -82,5 +82,5 @@ Things you may want to cover:
 |groups_id|integer|null: false, foreign_key: true|
 
 ### Association
-- belongs_to :groups
-- belongs_to :users
+- belongs_to :group
+- belongs_to :user
